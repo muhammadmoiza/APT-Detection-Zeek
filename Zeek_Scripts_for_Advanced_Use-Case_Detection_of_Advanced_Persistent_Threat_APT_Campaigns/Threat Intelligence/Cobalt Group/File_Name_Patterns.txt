@@ -1,0 +1,14 @@
+#fields	file_name
+#types	string
+Document082018.doc
+REMITTER REFERENCE PMT.pdf
+Aml_S0680260A79301.pdf
+CIT180126-000768.pdf
+AMENDMENT.pdf
+Citi720TEME171440008_Query.pdf
+Query _S-170526-005399.pdf
+Document092018.doc
+Proof of payment 19.09.2018.doc
+Document092018.doc
+Doc005681.doc
+

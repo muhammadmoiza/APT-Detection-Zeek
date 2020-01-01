@@ -1,0 +1,15 @@
+#fields	attachment_name
+#types	string
+Liberation Freedom Fighter.xlam
+NSC details of participants.xlam
+Raw Sect Vikram report on Pak Army Confidential.doc
+USA Immagration Policy for Families.ppam
+doc
+CV FM.doc
+Sukhoi35 deal report.doc
+Nominal Roll.doc
+Press Release 17 April.doc
+Afghan Blast report by ISI.doc
+Rigging in Pakistan Senate.doc
+Afghan Terrorist group report.doc
+

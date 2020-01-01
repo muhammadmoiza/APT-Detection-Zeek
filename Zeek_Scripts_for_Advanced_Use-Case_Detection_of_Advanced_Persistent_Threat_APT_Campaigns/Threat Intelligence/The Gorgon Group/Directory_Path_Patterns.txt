@@ -1,0 +1,8 @@
+#fields	path
+#types	string
+/work/docnew/
+/administrator/help/
+/xe/m/
+/xe/s/
+/images/yupsia/exe/
+/images/yupsia/doc/
