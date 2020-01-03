@@ -6,3 +6,4 @@
 /xe/s/
 /images/yupsia/exe/
 /images/yupsia/doc/
+/Login
