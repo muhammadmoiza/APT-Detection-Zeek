@@ -1,0 +1,6 @@
+#fields	id	IoC_Type	Traffic_Type	Tactics	Techniques
+#types	count	string	string	string	string
+1	EmailAttachment	Inbound	Initial Access	Spearphishing Attachment
+2	EmailSubject	Inbound	Initial Access	Spearphishing Attachment
+3	URL	Inbound	Initial Access	Spearphishing Attachment
+4	URL	Outbound	Initial Access	Spearphishing Attachment

@@ -1,5 +1,6 @@
 @load base/frameworks/notice
 @load base/frameworks/input
+@load ./IoC_TTP
 
 redef enum Notice::Type += 
 {
@@ -56,9 +57,10 @@ event HTTP::log_http(rec: HTTP::Info)
             {
                 NOTICE([
                         $note=UrlBlacklist,
-                        $msg=fmt("%s has been accessed while blacklisted", rec$host),
+                        $msg=fmt("%s has been accessed while blacklisted for %s", rec$host, URL_filter[i]$group_name),
                         $identifier=cat(rec$ts)
                 ]);
+                IoCToTTP::IoC_TTP_Mapping(URL_filter[i]$group_name,"URL",rec$host,rec$id$orig_h, URL_filter[i]$log_path);
             }
         }
         ++i;
