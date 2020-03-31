@@ -29,8 +29,14 @@ type IoC_TTP_Map: record {
     Techniques: string;
 };
 
+type Log_paths: record {
+    group_name: string;
+    log_path: string;
+};
+
 global IoC_TTP_filter: table[count] of IoC_TTP = table();
 global IoC_TTP_Map_List: table[count] of table[count] of IoC_TTP_Map = table();
+#global Log_paths_List: set[string] of Log_paths = set();
 
 export {
     global IoC_TTP_Mapping: function(group_name: string, IoC_type: string, IoC: any, orig_addr: addr, log_path: string): bool;
@@ -65,6 +71,15 @@ event bro_init()
 	Input::add_table([$source="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Scripts/IoC_TTP_filter.txt", $name="IoC_TTP_filter",
                           $idx=ID1, $val=IoC_TTP, $destination=IoC_TTP_filter, $ev = IoC_TTP_Map_Event]);
 	Input::remove("IoC_TTP_filter");
+
+    Log::create_stream(IoCToTTP::LOG, [$columns=Info, $path="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/"]);
+
+    Log::remove_filter(IoCToTTP::LOG, "default");
+    
+
+    # Input::add_table([$source="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Scripts/log_paths.txt", $name="log_paths",
+    #                       $idx=Log_paths, $destination=Log_paths_List]);
+	# Input::remove("log_paths");
 }
 
 function IoC_TTP_Mapping (group_name: string, IoC_type: string, IoC: any, orig_addr: addr, log_path: string): bool
@@ -92,12 +107,22 @@ function IoC_TTP_Mapping (group_name: string, IoC_type: string, IoC: any, orig_a
             #             $note=MuhammadMoizArshad,
             #             $msg=fmt("tactics: %s, techniques: %s", IoC_TTP_Map_List[temp][i]$Tactics, IoC_TTP_Map_List[temp][i]$Techniques)
             #     ]);
-            Log::create_stream(IoCToTTP::LOG, [$columns=Info, $path=log_path]);
+            
             local rec: IoCToTTP::Info = [$ts=network_time(), $group_name=IoC_TTP_filter[temp]$group_name, $ioc_type=IoC_type, $ioc=IoC, $traffic_type=traffic_type, $tactic=IoC_TTP_Map_List[temp][i]$Tactics, $technique=IoC_TTP_Map_List[temp][i]$Techniques];
+            # Log::write(IoCToTTP::LOG, rec);
+            # Log::disable_stream(IoCToTTP::LOG);
+
+            local filter: Log::Filter = [$name=IoC_TTP_filter[temp]$group_name, $path=log_path];
+            Log::add_filter(IoCToTTP::LOG, filter);
             Log::write(IoCToTTP::LOG, rec);
-            Log::disable_stream(IoCToTTP::LOG);
+
         }
         ++i;
      }
      return T;
+}
+
+event bro_done()
+{
+    Log::remove_stream(IoCToTTP::LOG);
 }

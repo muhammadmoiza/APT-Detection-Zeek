@@ -1,0 +1,3 @@
+#fields	group_name	log_path
+#types	string	string
+The Gorgon Group	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/The_Gorgon_Group

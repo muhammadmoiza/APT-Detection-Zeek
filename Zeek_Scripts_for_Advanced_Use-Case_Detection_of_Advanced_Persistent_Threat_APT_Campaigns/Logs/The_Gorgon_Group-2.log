@@ -1,0 +1,8 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/The_Gorgon_Group-2
+#open	2020-03-25-16-12-39
+#fields	ts	group_name	ioc_type	ioc	traffic_type	tactic	technique
+#types	time	string	string	string	string	string	string

@@ -1,4 +1,4 @@
-#fields	url
+#fields	host
 #types	string
 https://swift-fraud.com/documents
 http://95.142.39.109/e1.txt
@@ -43,4 +43,4 @@ https://address-in.kz/client/changelog.txt
 http://mail.maincdn.biz/s1/v111.xls
 https://mail.maincdn.biz/info/changelog.txt
 https://mail.maincdn.biz/s1/p11.db
-
+flexstudent.nu.edu.pk
