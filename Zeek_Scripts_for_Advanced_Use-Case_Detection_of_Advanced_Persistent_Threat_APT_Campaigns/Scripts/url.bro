@@ -23,18 +23,15 @@ type URL: record {
 
 global URL_filter: table[count] of URL = table();
 global blacklist: table[count] of set[string] = table();
+global url = 1;
 
 event blacklistentry(description: Input::TableDescription,
                      t: Input::Event, data: ID, data1: URL) {
-    local i = 1;
-    for (req in URL_filter)
-    {
-        blacklist[i] = set();
-        Input::add_table([$source=URL_filter[i]$intel_path, $name=URL_filter[i]$intel_path,
-                            $idx=Idx, $destination=blacklist[i]]);
-        Input::remove(URL_filter[i]$intel_path);
-        ++i;
-    }
+        blacklist[url] = set();
+        Input::add_table([$source=URL_filter[url]$intel_path, $name=URL_filter[url]$intel_path,
+                            $idx=Idx, $destination=blacklist[url]]);
+        Input::remove(URL_filter[url]$intel_path);
+        ++url;
 }
 
 event bro_init()
@@ -55,12 +52,8 @@ event HTTP::log_http(rec: HTTP::Info)
         {
             if (rec$host == req)
             {
-                NOTICE([
-                        $note=UrlBlacklist,
-                        $msg=fmt("%s has been accessed while blacklisted for %s", rec$host, URL_filter[i]$group_name),
-                        $identifier=cat(rec$ts)
-                ]);
-                IoCToTTP::IoC_TTP_Mapping(URL_filter[i]$group_name,"URL",rec$host,rec$id$orig_h, URL_filter[i]$log_path);
+                local format: string = "%F, %H:%M:%S";
+                IoCToTTP::IoC_TTP_Mapping(strftime(format,rec$ts), URL_filter[i]$group_name,"URL",rec$host,rec$id$orig_h, URL_filter[i]$log_path);
             }
         }
         ++i;

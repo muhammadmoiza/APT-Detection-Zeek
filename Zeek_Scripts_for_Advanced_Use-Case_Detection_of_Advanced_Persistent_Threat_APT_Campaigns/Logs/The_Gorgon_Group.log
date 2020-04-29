@@ -3,13 +3,13 @@
 #empty_field	(empty)
 #unset_field	-
 #path	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/The_Gorgon_Group
-#open	2020-03-31-19-04-40
-#fields	ts	group_name	ioc_type	ioc	traffic_type	tactic	technique
-#types	time	string	string	string	string	string	string
-1585663480.054843	The Gorgon Group	URL	flexstudent.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment
-1585663480.190863	The Gorgon Group	URL	flexstudent.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment
-1585663480.446839	The Gorgon Group	URL	flexstudent.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment
-1585663480.958811	The Gorgon Group	URL	flexstudent.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment
-1585663481.342499	The Gorgon Group	URL	flexstudent.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment
-1585663481.454884	The Gorgon Group	URL	flexstudent.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment
-1585663497.706866	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment
+#open	2020-04-29-17-34-43
+#fields	ts	group_name	ioc_type	ioc	traffic_type	tactic	technique	freq
+#types	string	string	string	string	string	string	string	count
+2020-04-29, 17:34:42	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	1
+2020-04-29, 17:34:43	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	2
+2020-04-29, 17:34:42	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	3
+2020-04-29, 17:34:43	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	4
+2020-04-29, 17:35:20	The Gorgon Group	Directory Path	/Login	Outbound	Command and Control	Remote File Copy	1
+2020-04-29, 17:35:20	The Gorgon Group	IP	210.56.9.82	Outbound	Initital Access	Spearphishing Attachment	1
+2020-04-29, 17:35:20	The Gorgon Group	IP	210.56.9.82	Outbound	Initital Access	Spearphishing Attachment	2

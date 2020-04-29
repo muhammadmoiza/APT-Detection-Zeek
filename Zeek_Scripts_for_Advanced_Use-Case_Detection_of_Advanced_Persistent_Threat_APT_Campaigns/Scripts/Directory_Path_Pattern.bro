@@ -1,5 +1,6 @@
 @load base/frameworks/notice
 @load base/frameworks/input
+@load ./IoC_TTP
 
 redef enum Notice::Type += 
 {
@@ -22,18 +23,15 @@ type directorypath: record {
 
 global DirectoryPath_filter: table[count] of directorypath = table();
 global path: table[count] of set[string] = table();
+global dppx = 1;
 
 event directorypathentry(description: Input::TableDescription,
                      t: Input::Event, data: ID, data1: directorypath) {
-    local i = 1;
-    for (req in DirectoryPath_filter)
-    {
-        path[i] = set();
-        Input::add_table([$source=DirectoryPath_filter[i]$intel_path, $name=DirectoryPath_filter[i]$intel_path,
-                            $idx=dpath, $destination=path[i]]);
-        Input::remove(DirectoryPath_filter[i]$intel_path);
-        ++i;
-    }
+        path[dppx] = set();
+        Input::add_table([$source=DirectoryPath_filter[dppx]$intel_path, $name=DirectoryPath_filter[dppx]$intel_path,
+                            $idx=dpath, $destination=path[dppx]]);
+        Input::remove(DirectoryPath_filter[dppx]$intel_path);
+        ++dppx;
 }
 
 event bro_init()
@@ -54,11 +52,8 @@ event HTTP::log_http(rec: HTTP::Info)
         {
             if (rec$uri == req)
             {
-                NOTICE([
-                        $note=DirectoryPath,
-                        $msg=fmt("%s has been accessed while blacklisted", rec$uri),
-                        $identifier=cat(rec$ts)
-                ]);
+                local format: string = "%F, %H:%M:%S";
+                IoCToTTP::IoC_TTP_Mapping(strftime(format,rec$ts), DirectoryPath_filter[i]$group_name,"Directory Path",rec$uri,rec$id$orig_h, DirectoryPath_filter[i]$log_path);
             }
         }
         ++i;

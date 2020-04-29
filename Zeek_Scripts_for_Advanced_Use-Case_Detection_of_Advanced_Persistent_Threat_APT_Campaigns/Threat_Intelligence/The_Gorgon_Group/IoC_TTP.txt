@@ -4,3 +4,6 @@
 2	EmailSubject	Inbound	Initial Access	Spearphishing Attachment
 3	URL	Inbound	Initial Access	Spearphishing Attachment
 4	URL	Outbound	Initial Access	Spearphishing Attachment
+5	IP	Outbound	Initital Access	Spearphishing Attachment
+6	Malware	Outbound	Command and Control	Remote File Copy
+7	Directory Path	Outbound	Command and Control	Remote File Copy

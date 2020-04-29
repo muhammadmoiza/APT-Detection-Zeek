@@ -1,5 +1,7 @@
 @load base/frameworks/notice
 @load base/frameworks/input
+@load ./IoC_TTP
+@load base/utils/addrs.bro
 
 redef enum Notice::Type += 
 {
@@ -22,18 +24,15 @@ type IP: record {
 
 global IP_filter: table[count] of IP = table();
 global iptable: table[count] of set[addr] = table();
+global ipx = 1;
 
 event ipentry(description: Input::TableDescription,
                      t: Input::Event, data: ID, data1: IP) {
-    local i = 1;
-    for (req in IP_filter)
-    {
-        iptable[i] = set();
-        Input::add_table([$source=IP_filter[i]$intel_path, $name=IP_filter[i]$intel_path,
-                            $idx=IPrecord, $destination=iptable[i]]);
-        Input::remove(IP_filter[i]$intel_path);
-        ++i;
-    }
+        iptable[ipx] = set();
+        Input::add_table([$source=IP_filter[ipx]$intel_path, $name=IP_filter[ipx]$intel_path,
+                            $idx=IPrecord, $destination=iptable[ipx]]);
+        Input::remove(IP_filter[ipx]$intel_path);
+        ++ipx;
 }
 
 event bro_init()
@@ -54,13 +53,8 @@ event HTTP::log_http(rec: HTTP::Info)
         {
             if (rec$id$resp_h == req)
             {
-                NOTICE([
-                        $note=IPBlacklist,
-                        $msg=fmt("%s has been accessed while blacklisted for %s", rec$host, IP_filter[i]$group_name),
-                        $src = rec$id$resp_h,
-                        $identifier=cat(rec$ts)
-                ]);
-                #IoCToTTP::IoC_TTP_Mapping(URL_filter[i]$group_name,"URL",rec$host,rec$id$orig_h, URL_filter[i]$log_path);
+                local format: string = "%F, %H:%M:%S";
+                IoCToTTP::IoC_TTP_Mapping(strftime(format,rec$ts),IP_filter[i]$group_name,"IP",addr_to_uri(rec$id$resp_h),rec$id$orig_h, IP_filter[i]$log_path);
             }
         }
         ++i;

@@ -1,0 +1,11 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/Confidence_Level
+#open	2020-04-29-17-34-43
+#fields	ts	group_name	confidence_level	severity_score
+#types	string	string	double	count
+2020-04-29, 17:34:42	The Gorgon Group	50.0	1
+2020-04-29, 17:35:20	The Gorgon Group	50.0	5
+2020-04-29, 17:35:20	The Gorgon Group	100.0	6
