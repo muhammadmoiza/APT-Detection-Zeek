@@ -1,0 +1,80 @@
+#separator \x09
+#set_separator	,
+#empty_field	(empty)
+#unset_field	-
+#path	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/The_Gorgon_Group
+#open	2020-05-11-18-38-21
+#fields	ts	group_name	ioc_type	ioc	traffic_type	tactic	technique	freq
+#types	string	string	string	string	string	string	string	count
+2020-05-11, 18:38:21	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	1
+2020-05-11, 18:38:21	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	2
+2020-05-11, 18:38:21	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	3
+2020-05-11, 18:38:22	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	4
+2020-05-11, 18:38:22	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	5
+2020-05-11, 18:38:21	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	6
+2020-05-11, 18:38:22	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	7
+2020-05-11, 18:38:22	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	8
+2020-05-11, 18:38:22	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	9
+2020-05-11, 18:38:23	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	10
+2020-05-11, 18:38:22	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	11
+2020-05-11, 18:38:21	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	12
+2020-05-11, 18:38:23	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	13
+2020-05-11, 18:38:23	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	14
+2020-05-11, 18:38:23	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	15
+2020-05-11, 18:38:21	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	16
+2020-05-11, 18:38:24	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	17
+2020-05-11, 18:38:23	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	18
+2020-05-11, 18:38:24	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	19
+2020-05-11, 18:38:24	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	20
+2020-05-11, 18:38:24	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	21
+2020-05-11, 18:38:23	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	22
+2020-05-11, 18:38:26	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	23
+2020-05-11, 18:38:26	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	24
+2020-05-11, 18:38:24	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	25
+2020-05-11, 18:38:24	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	26
+2020-05-11, 18:38:21	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	27
+2020-05-11, 18:38:22	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	28
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	29
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	30
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	31
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	32
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	33
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	34
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	35
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	36
+2020-05-11, 18:38:33	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	37
+2020-05-11, 18:38:34	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	38
+2020-05-11, 18:38:34	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	39
+2020-05-11, 18:38:34	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	40
+2020-05-11, 18:38:34	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	41
+2020-05-11, 18:38:34	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	42
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	43
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	44
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	45
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	46
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	47
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	48
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	49
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	50
+2020-05-11, 18:38:35	The Gorgon Group	URL	slate.nu.edu.pk	Outbound	Initial Access	Spearphishing Attachment	51
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	1
+2020-05-11, 18:38:37	The Gorgon Group	Directory Path	/Login	Outbound	Command and Control	Remote File Copy	1
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	2
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	3
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	4
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	5
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	6
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	7
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	8
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	9
+2020-05-11, 18:38:38	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	10
+2020-05-11, 18:38:38	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	11
+2020-05-11, 18:38:38	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	12
+2020-05-11, 18:38:37	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	13
+2020-05-11, 18:38:40	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	14
+2020-05-11, 18:38:38	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	15
+2020-05-11, 18:39:32	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	16
+2020-05-11, 18:39:32	The Gorgon Group	Directory Path	/Login	Outbound	Command and Control	Remote File Copy	2
+2020-05-11, 18:39:32	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	17
+2020-05-11, 18:39:33	The Gorgon Group	IP	210.56.9.82	Outbound	Initial Access	Spearphishing Attachment	18
+#close	2020-05-11-18-41-45

@@ -160,7 +160,7 @@ function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC:
                 #Check new TTP
                 local new_ttp = T;
                 local j = 1;
-                for (a in TTP_Only_Filter[temp])
+                while (j < |TTP_Only_Filter[temp]|)
                 {
                     if (TTP_Only_Filter[temp][j]$tactic == IoC_TTP_Map_List[temp][i]$Tactics && TTP_Only_Filter[temp][j]$technique == IoC_TTP_Map_List[temp][i]$Techniques)
                     {
@@ -168,14 +168,14 @@ function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC:
                         {
                             new_ttp = F;
                         }
-                        ++TTP_Only_Filter[temp][j]$frequency;
+                        TTP_Only_Filter[temp][j]$frequency += 1;
                     }
-                    ++j;
+                    j += 1;
                 }
 
                 #Increment TTP Frequency
-                ++IoC_TTP_Map_List[temp][i]$Frequency;
-                local totalttps = |TTP_Only_Filter[temp]| -1;
+                IoC_TTP_Map_List[temp][i]$Frequency += 1;
+                local totalttps = |TTP_Only_Filter[temp]|;
 
 
                 #Individual APT Log Write
@@ -209,8 +209,8 @@ function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC:
                         ++j;
                     }
                     #Add value of Confidence level
-                    #Confidence_Level = matchedttps;
-                    Confidence_Level = (matchedttps/totalttps) * 100.0;
+                    Confidence_Level = matchedttps;
+                    #Confidence_Level = (matchedttps/totalttps) * 100.0;
                     local rec1: IoCToTTP::APT_Confidence_Level = [$ts=ts, $group_name= IoC_TTP_filter[temp]$group_name, $confidence_level= Confidence_Level, $severity_score= Score];
                     local filter1: Log::Filter = [$name="Confidence_Level", $path="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/Confidence_Level"];
                     Log::add_filter(IoCToTTP::APT, filter1);
