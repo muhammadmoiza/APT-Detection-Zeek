@@ -1,0 +1,16 @@
+#fields	id	IoC_Type	Traffic_Type	Tactics	Techniques
+#types	count	string	string	string	string
+1	URL	Inbound	Initial Access	Spearphishing Attachment
+2	Malware Hash	Inbound	Initial Access	Spearphishing Attachment
+3	URL	Outbound	Command and Control	Connection Proxy
+4	Malware Hash	Outbound	Command and Control	Connection Proxy
+5	IP	Outbound	Command and Control	Connection Proxy
+6	URL	Outbound	Command and Control	Multi-Stage Channels
+7	Malware Hash	Outbound	Command and Control	Multi-Stage Channels
+8	IP	Outbound	Command and Control	Multi-Stage Channels
+9	URL	Outbound	Command and Control	Remote File Copy
+10	Malware Hash	Outbound	Command and Control	Remote File Copy
+11	IP	Outbound	Command and Control	Remote File Copy
+12	URL	Outbound	Exfilteration	Data Compressed
+13	Malware Hash	Outbound	Exfilteration	Data Compressed
+14	IP	Outbound	Exfilteration	Data Compressed

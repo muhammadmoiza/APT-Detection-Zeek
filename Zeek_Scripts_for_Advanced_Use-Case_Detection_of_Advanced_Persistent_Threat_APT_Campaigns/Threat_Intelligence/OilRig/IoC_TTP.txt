@@ -1,0 +1,21 @@
+#fields	id	IoC_Type	Traffic_Type	Tactics	Techniques
+#types	count	string	string	string	string
+1	URL	Inbound	Initial Access	Spearphishing Attachment
+2	Malware Hash	Inbound	Initial Access	Spearphishing Attachment
+3	IP	Inbound	Initial Access	Spearphishing Attachment
+4	URL	Inbound	Initial Access	Spearphishing as a Service
+5	Malware Hash	Inbound	Initial Access	Spearphishing as a Service
+6	URL	Inbound	Initial Access	Spearphishing Link
+7	Malware Hash	Inbound	Initial Access	Spearphishing Link
+8	IP	Inbound	Initial Access	Spearphishing Link
+9	URL	Outbound	Command and Control	Remote File Copy
+10	Malware Hash	Outbound	Command and Control	Remote File Copy
+11	IP	Outbound	Command and Control	Remote File Copy
+12	URL	Outbound	Command and Control	Standard Application Layer Protocol
+13	URL	Outbound	Command and Control	Standard Cryptographic Protocol
+14	Malware Hash	Outbound	Command and Control	Standard Cryptographic Protocol
+15	URL	Outbound	Command and Control	Commonly Used Ports
+16	Malware Hash	Outbound	Command and Control	Commonly Used Ports
+17	IP	Outbound	Command and Control	Commonly Used Ports
+18	URL	Outbound	Exfiltration	Exfiltration Over Alternative Protocols
+19	IP	Outbound	Exfiltration	Exfiltration Over Alternative Protocols

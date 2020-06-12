@@ -1,0 +1,17 @@
+#fields	id	IoC_Type	Traffic_Type	Tactics	Techniques
+#types	count	string	string	string	string
+1	URL	Outbound	Initial Access	Drive-by Compromise
+2	Malware Hash	Outbound	Initial Access	Drive-by Compromise
+3	IP	Outbound	Initial Access	Drive-by Compromise
+4	Malware Hash	Inbound	Initial Access	Spearphishing Attachment
+5	URL	Outbound	Initial Access	Spearphishing Attachment
+6	Malware Hash	Outbound	Initial Access	Spearphishing Attachment
+7	Directory Path	Outbound	Initial Access	Spearphishing Attachment
+8	IP	Outbound	Initial Access	Spearphishing Attachment
+9	URL	Outbound	Command and Control	Remote File Copy
+10	Malware Hash	Outbound	Command and Control	Remote File Copy
+11	Directory Path	Outbound	Command and Control	Remote File Copy
+12	IP	Outbound	Command and Control	Remote File Copy
+13	URL	Outbound	Exfiltration	Exfilteration Over Command and Control Channel
+14	Directory Path	Outbound	Exfiltration	Exfilteration Over Command and Control Channel
+15	IP	Outbound	Exfiltration	Exfilteration Over Command and Control Channel

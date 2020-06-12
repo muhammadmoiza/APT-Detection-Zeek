@@ -1,0 +1,7 @@
+#fields	id	group_name	ioc_path
+#types	count	string	string
+1	The Gorgon Group	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Threat_Intelligence/The_Gorgon_Group/IoC_TTP.txt
+2	Cobalt Group	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Threat_Intelligence/Cobalt_Group/IoC_TTP.txt
+3	Lazarus Group	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Threat_Intelligence/Lazarus_Group/IoC_TTP.txt
+4	MuddyWater	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Threat_Intelligence/MuddyWater/IoC_TTP.txt
+5	OilRig	/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Threat_Intelligence/OilRig/IoC_TTP.txt

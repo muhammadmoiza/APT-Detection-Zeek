@@ -48,7 +48,7 @@ global TTP_Only_Filter: table[count] of table[count] of TTP_Only_Map = table();
 global iocttpx = 1;
 
 export {
-    global IoC_TTP_Mapping: function(ts: string, group_name: string, IoC_type: string, IoC: any, orig_addr: addr, log_path: string): bool;
+    global IoC_TTP_Mapping: function(ts: string, group_name: string, IoC_type: string, IoC: any, source_ip: addr, dest_ip: addr, log_path: string): bool;
 
     redef enum Log::ID += { LOG };
     redef enum Log::ID += {APT};
@@ -58,6 +58,8 @@ export {
         ioc_type: string &log;
         ioc: string &log;
         traffic_type: string &log;
+        source_ip: addr &log;
+        dest_ip: addr &log;
         tactic: string &log;
         technique: string &log;
         freq: count &log;
@@ -71,9 +73,12 @@ export {
     };
 }
 
-event TTP_Only_Event(description: Input::TableDescription,
-                     t: Input::Event, data: ID2, data1: IoC_TTP_Map) {
-        local i: count = |IoC_TTP_Map_List|;
+function TTP_Only_Event(#description: Input::TableDescription,
+                     #t: Input::Event, data: ID2, data1: IoC_TTP_Map
+                     ) {
+    local i: count = 1;
+    while (i < iocttpx)
+    {
         TTP_Only_Filter[i] = table();
         local j = 1;
         local ttpcount = 1;
@@ -99,22 +104,24 @@ event TTP_Only_Event(description: Input::TableDescription,
             }
             ++j;
         }            
+        ++i;
+    }
 }
 
 event IoC_TTP_Map_Event(description: Input::TableDescription,
                      t: Input::Event, data: ID1, data1: IoC_TTP) {
         IoC_TTP_Map_List[iocttpx] = table();
         Input::add_table([$source=IoC_TTP_filter[iocttpx]$ioc_path, $name=IoC_TTP_filter[iocttpx]$ioc_path,
-                            $idx=ID2, $val = IoC_TTP_Map, $destination=IoC_TTP_Map_List[iocttpx], $ev = TTP_Only_Event]);
+                            $idx=ID2, $val = IoC_TTP_Map, $destination=IoC_TTP_Map_List[iocttpx]]);
         Input::remove(IoC_TTP_filter[iocttpx]$ioc_path);
         ++iocttpx;
 }
 
 event bro_init()
 {
-	Input::add_table([$source="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Scripts/IoC_TTP_filter.txt", $name="IoC_TTP_filter",
+	Input::add_table([$source="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Scripts/IoC_TTP_Sources.txt", $name="IoC_TTP_Sources",
                           $idx=ID1, $val=IoC_TTP, $destination=IoC_TTP_filter, $ev = IoC_TTP_Map_Event]);
-	Input::remove("IoC_TTP_filter");
+	Input::remove("IoC_TTP_Sources");
 
     Log::create_stream(IoCToTTP::LOG, [$columns=Info, $path="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/"]);
 
@@ -125,11 +132,16 @@ event bro_init()
     Log::remove_filter(IoCToTTP::APT, "default");
 }
 
-function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC: any, orig_addr: addr, log_path: string): bool
+function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC: any, source_ip: addr, dest_ip: addr, log_path: string): bool
 {
+    if (|TTP_Only_Filter| <= 0)
+    {
+        IoCToTTP::TTP_Only_Event();
+    }
+
     #Traffic Type Checking
     local traffic_type: string = "Inbound";
-    if(Site::is_private_addr(orig_addr))
+    if(Site::is_private_addr(source_ip))
         traffic_type = "Outbound";
     
     #Group detection
@@ -156,11 +168,10 @@ function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC:
             #IoC to TTP Mapped
             if (IoC_TTP_Map_List[temp][i]$IoC_Type == IoC_type && IoC_TTP_Map_List[temp][i]$Traffic_Type == traffic_type)
             {
-
                 #Check new TTP
                 local new_ttp = T;
                 local j = 1;
-                while (j < |TTP_Only_Filter[temp]|)
+                while (j <= |TTP_Only_Filter[temp]|)
                 {
                     if (TTP_Only_Filter[temp][j]$tactic == IoC_TTP_Map_List[temp][i]$Tactics && TTP_Only_Filter[temp][j]$technique == IoC_TTP_Map_List[temp][i]$Techniques)
                     {
@@ -179,10 +190,12 @@ function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC:
 
 
                 #Individual APT Log Write
-                local rec: IoCToTTP::Info = [$ts=ts, $group_name=IoC_TTP_filter[temp]$group_name, $ioc_type=IoC_type, $ioc=IoC, $traffic_type=traffic_type, $tactic=IoC_TTP_Map_List[temp][i]$Tactics, $technique=IoC_TTP_Map_List[temp][i]$Techniques, $freq= IoC_TTP_Map_List[temp][i]$Frequency];
+                local rec: IoCToTTP::Info = [$ts=ts, $group_name=IoC_TTP_filter[temp]$group_name, $ioc_type=IoC_type, $ioc=IoC, $traffic_type=traffic_type, $source_ip=source_ip, $dest_ip=dest_ip, $tactic=IoC_TTP_Map_List[temp][i]$Tactics, $technique=IoC_TTP_Map_List[temp][i]$Techniques, $freq= IoC_TTP_Map_List[temp][i]$Frequency];
                 local filter: Log::Filter = [$name=IoC_TTP_filter[temp]$group_name, $path=log_path];
                 Log::add_filter(IoCToTTP::LOG, filter);
                 Log::write(IoCToTTP::LOG, rec);
+
+                Log::remove_filter(IoCToTTP::LOG, IoC_TTP_filter[temp]$group_name);
 
                 #If TTP is new
                 if (new_ttp == T)
@@ -209,8 +222,8 @@ function IoC_TTP_Mapping (ts: string, group_name: string, IoC_type: string, IoC:
                         ++j;
                     }
                     #Add value of Confidence level
-                    Confidence_Level = matchedttps;
-                    #Confidence_Level = (matchedttps/totalttps) * 100.0;
+                    #Confidence_Level = matchedttps;
+                    Confidence_Level = (matchedttps/totalttps) * 100.0;
                     local rec1: IoCToTTP::APT_Confidence_Level = [$ts=ts, $group_name= IoC_TTP_filter[temp]$group_name, $confidence_level= Confidence_Level, $severity_score= Score];
                     local filter1: Log::Filter = [$name="Confidence_Level", $path="/nsm/bro/share/bro/policy/fyp/Zeek_Scripts_for_Advanced_Use-Case_Detection_of_Advanced_Persistent_Threat_APT_Campaigns/Logs/Confidence_Level"];
                     Log::add_filter(IoCToTTP::APT, filter1);

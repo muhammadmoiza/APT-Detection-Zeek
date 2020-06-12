@@ -1,4 +1,5 @@
-@load ./url.bro
-@load ./hashes.bro
-@load ./Directory_Path_Pattern.bro
-@load ./ip.bro
+@load ./URLDetection.bro
+@load ./MalwareHashDetection.bro
+@load ./DirectoryPathDetection.bro
+@load ./IPDetection.bro
+@load ./DNSRateLimiting.bro

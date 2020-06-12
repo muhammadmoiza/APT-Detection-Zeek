@@ -1,0 +1,22 @@
+#fields	host
+#types	string
+Myleftheart.com
+office365-management.com
+msoffice-cdn.com
+cdnmsnupdate.com
+ntpupdateserver.com
+cdnakamaiplanet.com
+msoffice365update.com
+adpolioe.com
+Microsoft-publisher.com
+shalaghlagh.tk
+go0gIe.com
+winodwsupdates.me
+update-kernal.net
+googleupdate.download
+yahoooooomail.com
+upgradesystems.info
+rdppath.com
+cpuproc.com
+acrobatverify.com
+http://africhthy.org/

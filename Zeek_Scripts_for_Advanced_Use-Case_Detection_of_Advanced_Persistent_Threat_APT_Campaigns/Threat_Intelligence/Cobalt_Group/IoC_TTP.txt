@@ -1,0 +1,8 @@
+#fields	id	IoC_Type	Traffic_Type	Tactics	Techniques
+#types	count	string	string	string	string
+1	URL	Inbound	SpearPhishing Link	Initial Access
+2	URL	Outbound	SpearPhishing Link	Initial Access
+3	URL	Outbound	Standard Application Layer Protocol	Command and Control
+4	URL	Outbound	Standard Cryptographic Protocol	Command and Control
+5	Malware Hash	Outbound	Standard Cryptographic Protocol	Command and Control
+6	Malware Hash	Inbound	Standard Cryptographic Protocol	Command and Control
